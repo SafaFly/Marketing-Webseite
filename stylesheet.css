@@ -1,0 +1,93 @@
+/* Allgemeine Stile */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white; /* Textfarbe für den Navbar */
+}
+
+#navbar-logo img {
+    height: 40px;
+}
+
+#navbar-nav {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+#navbar-nav a {
+    color: white; /* Textfarbe für die Links im Navbar */
+    text-decoration: none;
+    padding: 0 15px;
+}
+
+#navbar-nav a:hover {
+    text-decoration: underline; /* Unterstrich bei Hover */
+}
+
+#showcase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    background-image: url('path-to-background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+#showcase-content {
+    display: flex;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#showcase-text {
+    flex: 1;
+    margin-right: 20px;
+}
+
+#showcase-text h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+#showcase-text p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+#showcase-text button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #333;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#showcase-video {
+    width: 300px;
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+
+#showcase-video video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
