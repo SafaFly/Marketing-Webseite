@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="profile" href="https://gmpg.org/xfn/11">
     <title>Startseite - ÄNDERN</title>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Poppins%3A300%2C400%2C300%2C400%2C300%2C400&display=swap"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins%3A300%2C400%2C300%2C400&display=swap" media="print" onload="this.media='all'"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins%3A300%2C400%2C300%2C400%2C300%2C400&display=swap" media="print" onload="this.media='all'"/>
     <noscript>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins%3A300%2C400%2C300%2C400&display=swap"/>
     </noscript>
@@ -24,6 +22,9 @@
     <nav id="navbar">
         <div id="navbar-logo">
             <img src="path-to-logo.png" alt="Logo">
+        </div>
+		 <div id="navbar-toggle">
+            ☰ <!-- Hier das Symbol für das Menü einfügen, z.B. ☰ -->
         </div>
         <div id="navbar-nav">
             <a href="#">ÄNDERN</a>
@@ -103,10 +104,10 @@
         </div>
         <div id="user-info-form" style="display: none;">
             <h3>Bitte geben Sie Ihre Kontaktdaten ein:</h3>
-            <input type="text" id="name-input" placeholder="Name">
-            <input type="tel" id="phone-input" placeholder="Telefonnummer">
+            <input type="text" id="name-input" placeholder="Name*" required>
+            <input type="tel" id="phone-input" placeholder="Telefonnummer*" required>
             <input type="url" id="website-input" placeholder="Webseite (Optional)">
-            <input type="email" id="email-input" placeholder="E-Mail">
+            <input type="email" id="email-input" placeholder="E-Mail*" required>
             <button id="submit-user-info-btn">Daten bestätigen</button>
         </div>
         <div id="result-container" style="display: none;">
@@ -118,18 +119,44 @@
             <h2>Information</h2>
             <p>Wir bieten leider nichts unter diesem Preispunkt an.</p>
         </div>
+		<div id="sucess-container" style="display: none;">
+            <h2>Danke für deine Anfrage</h2>
+            <p>Wir werden uns schnellstmöglich bei dir melden.</p>
+        </div>
     </div>
 
     <script>
+	// JavaScript für das responsive Navigationsmenü
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('navbar-toggle');
+            const nav = document.getElementById('navbar-nav');
+
+            toggleBtn.addEventListener('click', function() {
+                nav.classList.toggle('show');
+            });
+        });
+
         // JavaScript für die Frage-und-Antwort-Logik
         document.addEventListener('DOMContentLoaded', function() {
             const questionContainers = document.querySelectorAll('.question-container');
-            const resultContainer = document.getElementById('result-container');
             const notOfferedContainer = document.getElementById('not-offered-container');
+			const sucessContainer = document.getElementById('sucess-container');
             const userInfoForm = document.getElementById('user-info-form');
             const selectedOptionsText = document.getElementById('selected-options');
             const userDataText = document.getElementById('user-data');
             let address = '';
+            let selectedAnswers = {}; // Objekt zur Speicherung der ausgewählten Antworten
+
+            // Array zur Speicherung der Fragen
+            const questions = [
+                "Ist dein Unternehmen auf TikTok?",
+                "Was ist deine Priorität?",
+                "Wähle deinen geplanten Zeitraum:",
+                "Wer soll vor die Kamera?",
+                "Drehen wir bei euch oder bei uns?",
+                "Bitte geben Sie die Adresse ein:",
+                "Unsere Dienstleistungen kosten ungefähr 3000-5000€ im Monat. Sind Sie damit einverstanden?"
+            ];
 
             // Funktion, um eine bestimmte Frage anzuzeigen
             function showQuestion(index) {
@@ -154,7 +181,9 @@
                         const answerText = answer.getAttribute('data-answer');
 
                         // Speichere die ausgewählte Antwort
-                        selectedOptionsText.innerHTML += `${container.querySelector('h3').textContent} : ${answerText}<br>`;
+                        selectedAnswers[questions[index]] = answerText;
+
+                        selectedOptionsText.innerHTML += `${questions[index]} : ${answerText}<br>`;
 
                         if (index === 0) {
                             showQuestion(1);
@@ -162,7 +191,7 @@
                             showQuestion(2);
                         } else if (index === 2) {
                             showQuestion(3);
-                        } else if (index === 3) {
+							                        } else if (index === 3) {
                             showQuestion(4);
                         } else if (index === 4) {
                             if (answerText === 'bei uns') {
@@ -172,111 +201,119 @@
                             }
                         } else if (index === 5) {
                             address = document.getElementById('address-input').value;
-showQuestion(6);
-} else if (index === 6) {
-if (answerText === 'Ja') {
-showUserForm();
-} else {
-showNotOffered();
-}
-}
-});
-});
-});
-        // Funktion, um das Benutzerdaten-Formular anzuzeigen
-        function showUserForm() {
-            userInfoForm.style.display = 'block';
-
-            // Verberge alle Frage-Container und das Kontaktformular
-            questionContainers.forEach(container => {
-                container.style.display = 'none';
+                            showQuestion(6);
+                        } else if (index === 6) {
+                            if (answerText === 'Ja') {
+                                showUserForm();
+                            } else {
+                                showNotOffered();
+                            }
+                        }
+                    });
+                });
             });
-        }
 
-        // Event Listener für das Benutzerdaten-Formular
-        const submitUserInfoBtn = document.getElementById('submit-user-info-btn');
-        submitUserInfoBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name-input').value;
-            const phone = document.getElementById('phone-input').value;
-            const website = document.getElementById('website-input').value;
-            const email = document.getElementById('email-input').value;
+            // Funktion, um das Benutzerdaten-Formular anzuzeigen
+            function showUserForm() {
+                userInfoForm.style.display = 'block';
 
-            // Validierung der Eingaben (hier einfachheitshalber nur das E-Mail-Feld)
-            if (email && validateEmail(email)) {
-                // AJAX-Anfrage erstellen
-                const xhr = new XMLHttpRequest();
-                const url = 'ergebnis.php'; // Pfad zum PHP-Skript auf deinem Server
-
-                // Daten zusammenstellen
-                const params = `name=${name}&telefon=${phone}&webseite=${website}&email=${email}`;
-
-                // POST-Anfrage senden
-                xhr.open('POST', url, true);
-                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        // Erfolgreiche Verarbeitung (optional: Erfolgsmeldung anzeigen)
-                        console.log('E-Mail erfolgreich gesendet');
-                        // Hier kannst du weitere Aktionen ausführen, z.B. eine Erfolgsmeldung anzeigen
-                    }
-                };
-
-                // Anfrage senden
-                xhr.send(params);
-
-                // Verberge das Formular
-                userInfoForm.style.display = 'none';
-
-                // Zeige die gesammelten Antworten und Benutzerdaten an
-                showResultsWithUserData(name, phone, website, email);
-            } else {
-                alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+                // Verberge alle Frage-Container und das Kontaktformular
+                questionContainers.forEach(container => {
+                    container.style.display = 'none';
+                });
             }
-        });
 
-        // Funktion zur Validierung der E-Mail-Adresse (einfache Validierung)
-        function validateEmail(email) {
-            const re = /\S+@\S+\.\S+/;
-            return re.test(email);
-        }
+            // Event Listener für das Benutzerdaten-Formular
+            const submitUserInfoBtn = document.getElementById('submit-user-info-btn');
+            submitUserInfoBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name-input').value;
+                const phone = document.getElementById('phone-input').value;
+                const website = document.getElementById('website-input').value;
+                const email = document.getElementById('email-input').value;
 
-        // Funktion, um die Ergebnisse mit Benutzerdaten anzuzeigen
-        function showResultsWithUserData(name, phone, website, email) {
-            resultContainer.style.display = 'block';
-            userDataText.innerHTML = `
-                Name: ${name}<br>
-                Telefonnummer: ${phone}<br>
-                Webseite: ${website}<br>
-                E-Mail: ${email}<br>
-            `;
+				// Validierung der Pflichtfelder
+				if (name.trim() === '' || phone.trim() === '' || email.trim() === '') {
+					alert('Bitte füllen Sie alle Pflichtfelder aus.');
+				return;
+				}
 
-            // Verberge alle Frage-Container und das Benutzerdaten-Formular
-            questionContainers.forEach(container => {
-                container.style.display = 'none';
+                // Validierung der Eingaben (hier einfachheitshalber nur das E-Mail-Feld)
+                if (email && validateEmail(email)) {
+                    // AJAX-Anfrage erstellen
+                    const xhr = new XMLHttpRequest();
+                    const url = 'ergebnis.php'; // Pfad zum PHP-Skript auf deinem Server
+
+                    // Daten zusammenstellen
+                    const params = `name=${name}&telefon=${phone}&webseite=${website}&email=${email}&antworten=${JSON.stringify(selectedAnswers)}`;
+
+                    // POST-Anfrage senden
+                    xhr.open('POST', url, true);
+                    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            // Erfolgreiche Verarbeitung (optional: Erfolgsmeldung anzeigen)
+                            console.log(xhr.responseText);
+                            // Hier kannst du weitere Aktionen ausführen, z.B. eine Erfolgsmeldung anzeigen
+							showSucess(); // Hier wird die Funktion aufgerufen, wenn die Anfrage erfolgreich war
+                        }
+                    };
+
+                    // Anfrage senden
+                    xhr.send(params);
+
+                    // Verberge das Formular
+                    userInfoForm.style.display = 'none';
+
+                    // Zeige die gesammelten Antworten und Benutzerdaten an
+                    showResultsWithUserData(name, phone, website, email);
+                } else {
+                    alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+                }
             });
-            userInfoForm.style.display = 'none';
-        }
 
-        // Funktion, um die Nachricht anzuzeigen, wenn der Preis nicht akzeptiert wird
-        function showNotOffered() {
-            notOfferedContainer.style.display = 'block';
+            // Funktion zur Validierung der E-Mail-Adresse (einfache Validierung)
+            function validateEmail(email) {
+                const re = /\S+@\S+\.\S+/;
+                return re.test(email);
+            }
 
-            // Verberge alle Frage-Container
-            questionContainers.forEach(container => {
-                container.style.display = 'none';
-            });
-        }
+            // Funktion, um die Nachricht anzuzeigen, wenn der Preis nicht akzeptiert wird
+            function showNotOffered() {
+                notOfferedContainer.style.display = 'block';
 
-        // Event Listener für die Adresseingabe-Bestätigung
-        const submitAddressBtn = document.getElementById('submit-address-btn');
-        submitAddressBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            address = document.getElementById('address-input').value;
-            showQuestion(6);
+                // Verberge alle Frage-Container
+                questionContainers.forEach(container => {
+                    container.style.display = 'none';
+                });
+            }
+			
+			// Funktion, um die Nachricht anzuzeigen, wenn Formular gesendet wird
+            function showSucess() {
+                sucessContainer.style.display = 'block';
+
+                // Verberge alle Frage-Container
+                questionContainers.forEach(container => {
+                    container.style.display = 'none';
+                });
+            }
+
+            // Event Listener für die Adresseingabe-Bestätigung
+            const submitAddressBtn = document.getElementById('submit-address-btn');
+submitAddressBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    address = document.getElementById('address-input').value;
+
+    // Überprüfung, ob "bei uns" ausgewählt wurde und eine Adresse eingegeben wurde
+    if (selectedAnswers[questions[4]] === 'bei uns' && address.trim() !== '') {
+        selectedAnswers['Adresse'] = address; // Adresse hinzufügen zu den ausgewählten Antworten
+    }
+
+    // Frage 7 anzeigen unabhängig von der Adresseingabe
+    showQuestion(6);
+});
         });
-    });
-</script>
+    </script>
 </body>
 </html>
