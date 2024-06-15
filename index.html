@@ -47,6 +47,30 @@
             margin-top: 30px;
             display: none; /* Ergebniscontainer standardmäßig ausblenden */
         }
+        #not-offered-container {
+            margin-top: 30px;
+            display: none; /* Not offered container standardmäßig ausblenden */
+        }
+        #user-info-form {
+            display: none;
+            margin-top: 20px;
+        }
+        #user-info-form input {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        #user-info-form button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #user-info-form button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -87,7 +111,7 @@
             </div>
         </div>
         <div id="question2" class="question-container" style="display: none;">
-            <h3>Wähle nur deine Priorität 1:</h3>
+            <h3>Was ist deine Priorität?:</h3>
             <div class="answer-options">
                 <a href="#" data-answer="umsatz">Umsatz</a>
                 <a href="#" data-answer="Bekanntheit">Bekanntheit</a>
@@ -104,7 +128,7 @@
             </div>
         </div>
         <div id="question4" class="question-container" style="display: none;">
-            <h3>Die Auswahl bestimmt den Preis:</h3>
+            <h3>Wer soll vor die Kamera?:</h3>
             <div class="answer-options">
                 <a href="#" data-answer="ich">Ich</a>
                 <a href="#" data-answer="mitarbeiter">Mitarbeiter</a>
@@ -123,9 +147,29 @@
             <input type="text" id="address-input">
             <button id="submit-address-btn">Adresse bestätigen</button>
         </div>
+        <div id="question7" class="question-container" style="display: none;">
+            <h3>Unsere Dienstleistungen kosten ungefähr 3000-5000€ im Monat. Sind Sie damit einverstanden?</h3>
+            <div class="answer-options">
+                <a href="#" data-answer="Ja">Ja</a>
+                <a href="#" data-answer="Nein">Nein</a>
+            </div>
+        </div>
+        <div id="user-info-form">
+            <h3>Bitte geben Sie Ihre Kontaktdaten ein:</h3>
+            <input type="text" id="name-input" placeholder="Name">
+            <input type="tel" id="phone-input" placeholder="Telefonnummer">
+            <input type="url" id="website-input" placeholder="Webseite (Optional)">
+            <input type="email" id="email-input" placeholder="E-Mail">
+            <button id="submit-user-info-btn">Daten bestätigen</button>
+        </div>
         <div id="result-container" style="display: none;">
             <h2>Ergebnis</h2>
             <p id="selected-options"></p>
+            <p id="user-data"></p>
+        </div>
+        <div id="not-offered-container" style="display: none;">
+            <h2>Information</h2>
+            <p>Wir bieten leider nichts unter diesem Preispunkt an.</p>
         </div>
     </div>
 
@@ -134,78 +178,153 @@
         document.addEventListener('DOMContentLoaded', function() {
             const questionContainers = document.querySelectorAll('.question-container');
             const resultContainer = document.getElementById('result-container');
+            const notOfferedContainer = document.getElementById('not-offered-container');
+            const userInfoForm = document.getElementById('user-info-form');
             const selectedOptionsText = document.getElementById('selected-options');
+            const userDataText = document.getElementById('user-data');
+			let address = '';
+	        // Funktion, um eine bestimmte Frage anzuzeigen
+        function showQuestion(index) {
+            questionContainers.forEach((container, idx) => {
+                if (idx === index) {
+                    container.style.display = 'block';
+                } else {
+                    container.style.display = 'none';
+                }
+            });
+        }
 
-            // Funktion, um eine bestimmte Frage anzuzeigen
-            function showQuestion(index) {
-                questionContainers.forEach((container, idx) => {
-                    if (idx === index) {
-                        container.style.display = 'block';
-                    } else {
-                        container.style.display = 'none';
+        // Zeige die erste Frage beim Laden der Seite an
+        showQuestion(0);
+
+        // Event Listener für alle Antwort-Optionen
+        questionContainers.forEach((container, index) => {
+            const answerOptions = container.querySelectorAll('.answer-options a');
+            answerOptions.forEach(answer => {
+                answer.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const answerText = answer.getAttribute('data-answer');
+
+                    // Speichere die ausgewählte Antwort
+                    selectedOptionsText.innerHTML += `${container.querySelector('h3').textContent} : ${answerText}<br>`;
+
+                    if (index === 0) {
+                        showQuestion(1);
+                    } else if (index === 1) {
+                        showQuestion(2);
+                    } else if (index === 2) {
+                        showQuestion(3);
+                    } else if (index === 3) {
+                        showQuestion(4);
+                    } else if (index === 4) {
+                        if (answerText === 'bei uns') {
+                            showQuestion(5);
+                        } else {
+                            showQuestion(6);
+                        }
+                    } else if (index === 5) {
+                        address = document.getElementById('address-input').value;
+                        showQuestion(6);
+                    } else if (index === 6) {
+                        if (answerText === 'Ja') {
+                            showUserForm();
+                        } else {
+                            showNotOffered();
+                        }
                     }
                 });
-            }
-
-            // Zeige die erste Frage beim Laden der Seite an
-            showQuestion(0);
-
-            // Event Listener für alle Antwort-Optionen
-            questionContainers.forEach((container, index) => {
-                const answerOptions = container.querySelectorAll('.answer-options a');
-                answerOptions.forEach(answer => {
-                    answer.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        const answerText = answer.getAttribute('data-answer');
-                        if (index === 0 && (answerText === 'Ja' || answerText === 'Nein')) {
-                            // Nach der ersten Frage ändern wir die nächste Frage
-                            showQuestion(1);
-                        } else if (index === 1) {
-                            // Nach der zweiten Frage ändern wir die nächste Frage
-                            showQuestion(2);
-                        } else if (index === 2) {
-                            // Nach der dritten Frage ändern wir die nächste Frage
-                            showQuestion(3);
-                        } else if (index === 3) {
-                            // Nach der vierten Frage ändern wir die nächste Frage
-                            showQuestion(4);
-                        } else if (index === 4 && (answerText === 'bei uns' || answerText === 'bei euch')) {
-                            // Je nachdem, ob wir bei uns oder bei euch drehen, zeigen wir die Adresseingabe
-                            showQuestion(5);
-                        } else if (index === 5) {
-                            // Wenn alle Fragen beantwortet sind, zeige das Ergebnis an
-                            showResult();
-                        }
-
-                                                // Speichere die ausgewählte Antwort
-                        selectedOptionsText.innerHTML += `${container.querySelector('h3').textContent} : ${answerText}<br>`;
-                    });
-                });
-            });
-
-            // Funktion, um das Ergebnis anzuzeigen
-            function showResult() {
-                resultContainer.style.display = 'block';
-
-                // Verberge alle Frage-Container
-                questionContainers.forEach(container => {
-                    container.style.display = 'none';
-                });
-
-                // Zeige die gesammelten Antworten an
-                selectedOptionsText.innerHTML += `Drehort: ${document.querySelector('#question5 .answer-options a.active').getAttribute('data-answer')}<br>`;
-                if (document.querySelector('#question5 .answer-options a.active').getAttribute('data-answer') === 'bei uns') {
-                    selectedOptionsText.innerHTML += `Adresse: ${document.getElementById('address-input').value}<br>`;
-                }
-            }
-
-            // Event Listener für die Adresseingabe-Bestätigung
-            const submitAddressBtn = document.getElementById('submit-address-btn');
-            submitAddressBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                showResult();
             });
         });
-    </script>
+
+        // Funktion, um das Benutzerdaten-Formular anzuzeigen
+        function showUserForm() {
+            userInfoForm.style.display = 'block';
+        }
+
+        // Event Listener für das Benutzerdaten-Formular
+        const submitUserInfoBtn = document.getElementById('submit-user-info-btn');
+        submitUserInfoBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name-input').value;
+            const phone = document.getElementById('phone-input').value;
+            const website = document.getElementById('website-input').value;
+            const email = document.getElementById('email-input').value;
+
+            // Validierung der Eingaben (hier einfachheitshalber nur das E-Mail-Feld)
+            if (email && validateEmail(email)) {
+                // AJAX-Anfrage erstellen
+                const xhr = new XMLHttpRequest();
+                const url = 'ergebnis.php'; // Pfad zum PHP-Skript auf deinem Server
+
+                // Daten zusammenstellen
+                const params = `name=${name}&telefon=${phone}&webseite=${website}&email=${email}`;
+
+                // POST-Anfrage senden
+                xhr.open('POST', url, true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        // Erfolgreiche Verarbeitung (optional: Erfolgsmeldung anzeigen)
+                        console.log('E-Mail erfolgreich gesendet');
+                        // Hier kannst du weitere Aktionen ausführen, z.B. eine Erfolgsmeldung anzeigen
+                    }
+                };
+
+                // Anfrage senden
+                xhr.send(params);
+
+                // Verberge das Formular
+                userInfoForm.style.display = 'none';
+
+                // Zeige die gesammelten Antworten und Benutzerdaten an
+                showResultsWithUserData(name, phone, website, email);
+            } else {
+                alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+            }
+        });
+
+        // Funktion zur Validierung der E-Mail-Adresse (einfache Validierung)
+        function validateEmail(email) {
+            const re = /\S+@\S+\.\S+/;
+            return re.test(email);
+        }
+
+        // Funktion, um die Ergebnisse mit Benutzerdaten anzuzeigen
+        function showResultsWithUserData(name, phone, website, email) {
+            resultContainer.style.display = 'block';
+            userDataText.innerHTML = `
+                Name: ${name}<br>
+                Telefonnummer: ${phone}<br>
+                Webseite: ${website}<br>
+                E-Mail: ${email}<br>
+            `;
+
+            // Verberge alle Frage-Container und das Benutzerdaten-Formular
+            questionContainers.forEach(container => {
+                container.style.display = 'none';
+            });
+            userInfoForm.style.display = 'none';
+        }
+
+        // Funktion, um die Nachricht anzuzeigen, wenn der Preis nicht akzeptiert wird
+        function showNotOffered() {
+            notOfferedContainer.style.display = 'block';
+
+            // Verberge alle Frage-Container
+            questionContainers.forEach(container => {
+                container.style.display = 'none';
+            });
+        }
+
+        // Event Listener für die Adresseingabe-Bestätigung
+        const submitAddressBtn = document.getElementById('submit-address-btn');
+        submitAddressBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            address = document.getElementById('address-input').value;
+            showQuestion(6);
+        });
+    });
+</script>
 </body>
 </html>

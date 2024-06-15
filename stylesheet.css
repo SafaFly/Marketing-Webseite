@@ -1,4 +1,3 @@
-/* Allgemeine Stile */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -11,7 +10,7 @@ body {
     align-items: center;
     padding: 30px 20px;
     background-color: #333;
-    color: white; /* Textfarbe für den Navbar */
+    color: white;
 }
 
 #navbar-logo img {
@@ -25,13 +24,13 @@ body {
 }
 
 #navbar-nav a {
-    color: white; /* Textfarbe für die Links im Navbar */
+    color: white;
     text-decoration: none;
     padding: 0 15px;
 }
 
 #navbar-nav a:hover {
-    text-decoration: underline; /* Unterstrich bei Hover */
+    text-decoration: underline;
 }
 
 #showcase {
@@ -40,7 +39,7 @@ body {
     justify-content: center;
     padding: 150px;
     background-image: url('path-to-background.jpg');
-	background-color: black;
+    background-color: black;
     background-size: cover;
     background-position: center;
     color: white;
@@ -90,4 +89,35 @@ body {
     width: 100%;
     height: auto;
     border-radius: 10px;
+}
+
+.question-container {
+        margin-top: 30px;
+}
+.question-container h3 {
+        margin-bottom: 10px;
+}
+.answer-options {
+        display: flex;
+        gap: 10px;
+        margin-top: 5px;
+}
+.answer-options a {
+        padding: 8px 12px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #333;
+        cursor: pointer;
+}
+.answer-options a:hover {
+        background-color: #e0e0e0;
+}
+#result-container {
+        margin-top: 30px;
+        display: none; /* Ergebniscontainer standardmäßig ausblenden */
+}
+#not-offered-container {
+        margin-top: 30px;
+        display: none; /* Not offered container standardmäßig ausblenden */
 }
