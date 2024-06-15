@@ -8,6 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden; /* Deaktiviert die horizontale Scroll-Leiste */
 }
 
 /* Navbar Styles */
@@ -16,8 +17,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background-color: #003366;
-    color: white;
+    background-color: #ffffff; /* Weiße Hintergrundfarbe */
+    color: #000000; /* Schwarzer Text */
     width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -34,47 +35,67 @@ body {
 
 #navbar-nav {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Inhalte in der Mitte ausrichten */
+    align-items: center; /* Vertikal zentrieren */
     flex-grow: 1;
 }
 
 #navbar-nav a {
-    color: white;
+    color: #000000; /* Schwarzer Text */
     text-decoration: none;
     padding: 0 15px;
 }
 
 #navbar-nav a:hover {
     text-decoration: underline;
+    color: #007bff; /* Farbe für Hover-Effekt */
 }
+
 
 /* Showcase Styles */
 #showcase {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 100px 20px;
-    background-image: url('path-to-background.jpg');
-    background-color: #004466;
+    background-color: #fffff;
     background-size: cover;
     background-position: center;
     color: white;
     width: 100%;
+    overflow: hidden;
+}
+
+#showcase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Breite des Containers */
+    height: 100%;
+    background-image: url('path-to-background.jpg');
+    background-size: cover; /* Bild skalieren, um den Container zu bedecken */
+    background-position: center; /* Bild zentrieren */
+    filter: blur(10px); /* Blur-Effekt */
+    z-index: 0;
+    transition: transform 0.3s ease;
 }
 
 #showcase-content {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
+    justify-content: center; /* Zentriert den Inhalt horizontal */
+    align-items: center; /* Zentriert den Inhalt vertikal */
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1; /* Höheres Z-Index, um vor dem unscharfen Hintergrund zu bleiben */
 }
 
+
 #showcase-text {
-    flex: 1 1 60%;
+    flex: 1 1 auto; /* Flex-Verhältnis für den Textbereich */
     margin-right: 20px;
 }
 
@@ -90,14 +111,23 @@ body {
 }
 
 #showcase-video {
-    flex: 1 1 40%;
+    flex: 1 1 auto; /* Flex-Verhältnis für den Videobereich */
     margin-left: 20px;
+	width: 900px;
 }
 
 #showcase-video video {
     width: 100%;
     height: auto;
-    border-radius: 10px;
+}
+
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
 
 /* Center Container Styles */
@@ -114,6 +144,7 @@ body {
 /* Question Container Styles */
 .question-container {
     margin-top: 30px;
+    text-align: center; /* Zentriert den Text horizontal */
 }
 
 .question-container h3 {
@@ -124,6 +155,8 @@ body {
 
 .answer-options {
     display: flex;
+    flex-wrap: wrap; /* Zeilenumbruch für kleine Bildschirme */
+    justify-content: center; /* Zentriert die Antwortbuttons horizontal */
     gap: 10px;
     margin-top: 5px;
 }
@@ -191,6 +224,31 @@ body {
     font-size: 1em;
 }
 
+/* CSS für die Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* Optional: Startposition anpassen */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Endposition anpassen */
+    }
+}
+
+/* Anwendungsbeispiel der Animation auf das Kontaktformular */
+#user-info-form {
+    display: none;
+    animation: fadeIn 0.5s ease forwards; /* Animation anwenden */
+}
+
+/* Anwendungsbeispiel der Animation auf die Frage-Container */
+.question-container {
+    display: none;
+    animation: fadeIn 0.5s ease forwards; /* Animation anwenden */
+}
+
+
 /* Media Query for Mobile Devices */
 @media (max-width: 768px) {
     #navbar {
@@ -209,14 +267,42 @@ body {
         left: 0;
         width: 100%;
         background-color: #003366;
+        transition: transform 0.3s ease; /* Hinzufügen einer Übergangseigenschaft für ein sanftes Ein- und Ausblenden */
+        transform: translateY(-100%); /* Startzustand, Menü außerhalb des Bildschirms */
     }
 
     #navbar-nav.show {
         display: flex;
+        transform: translateY(0); /* Einblenden des Menüs durch Verschieben nach oben */
     }
 
     #navbar-nav a {
         padding: 15px 20px;
         text-align: center;
     }
+    #showcase-content {
+        flex-direction: column; /* Ändere das Layout auf Spaltenanordnung */
+        align-items: center; /* Zentriere den Inhalt horizontal */
+    }
+
+    #showcase-text {
+        margin-right: 0; /* Kein rechter Abstand bei kleineren Bildschirmen */
+        margin-bottom: 20px; /* Abstand zwischen Text und Video hinzufügen */
+        text-align: center; /* Zentriere den Text horizontal */
+    }
+
+    #showcase-video {
+        margin-left: 0; /* Kein linker Abstand bei kleineren Bildschirmen */
+        width: 100%; /* Volle Breite für das Video */
+    }
+	
+	.question-container h3 {
+        font-size: 1.2em; /* Kleinere Schriftgröße für Überschrift */
+    }
+
+    .answer-options a {
+        padding: 8px 12px; /* Kleinere Abstände für Antwortbuttons */
+        font-size: 0.9em; /* Kleinere Schriftgröße für Antwortbuttons */
+    }
+
 }
