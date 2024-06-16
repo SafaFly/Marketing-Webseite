@@ -16,33 +16,36 @@
     <meta property="og:description" content="ÄNDERN ÄNDERN ÄNDERN ÄNDERN ÄNDERN ÄNDERN ÄNDERN ÄNDERN ÄNDERN ÄNDERN "/>
     <meta property="og:url" content="https://ÄNDERN/"/>
     <meta property="og:site_name" content="ÄNDERN"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylesheet.css">
 	<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
 </head>
 <body>
+
     <nav id="navbar">
         <div id="navbar-logo">
-            <img src="path-to-logo.png" alt="Logo">
+            <a href="#"><img src="path-to-logo.png" alt="Logo"></a>
         </div>
 		 <div id="navbar-toggle">
             ☰ <!-- Hier das Symbol für das Menü einfügen, z.B. ☰ -->
         </div>
         <div id="navbar-nav">
-            <a href="#">ÄNDERN</a>
-            <a href="#">ÄNDERN</a>
-            <a href="#">ÄNDERN</a>
-            <a href="#">ÄNDERN</a>
+            <a href="#">Startseite</a>
+            <a href="#" id="mitglied-button">Mitglied werden</a>
+            <a href="#">Werbeanzeigen</a>
+            <a href="#">Mitarbeiter</a>
         </div>
     </nav>
     <section id="showcase">
 	 <div id="particles-js"></div>
         <div id="showcase-content">
             <div id="showcase-text">
-                <h1>Willkommen bei ÄNDERN</h1>
-                <p>ÄNDERN ÄNDERN ÄNDERN ÄNDERN ÄNDERN ÄNDERN ÄNDERN ÄNDERN ÄNDERN</p>
-                <p>ÄNDERN ÄNDERN ÄNDERN ÄNDERN ÄNDERN ÄNDERN ÄNDERN ÄNDERN ÄNDERN</p>
-            </div>
+                <h1>Willkommen bei Yarro</h1>
+                <p>Wir drehen organischen Content für Monate in wenigen Tagen. Wir übernehmen die Konzepterstellung, Planung, Umsetzung und das Management für dich.</p>
+				<button id="showcase-button">Mehr erfahren</button>
+			</div>
             <div id="showcase-video">
                 <video controls>
                     <source src="path-to-video.mp4" type="video/mp4">
@@ -55,14 +58,16 @@
     <!-- Dynamische Inhalte -->
     <div id="dynamic-content">
         <div id="question1" class="question-container">
-            <h3>Ist dein Unternehmen auf TikTok?</h3>
+            <h2>Starte jetzt durch!</h2>
+			<h4>Ist dein Unternehmen auf TikTok?</h4>
             <div class="answer-options">
                 <a href="#" data-answer="Ja">Ja</a>
                 <a href="#" data-answer="Nein">Nein</a>
             </div>
         </div>
         <div id="question2" class="question-container" style="display: none;">
-            <h3>Was ist deine Priorität?:</h3>
+            <h2>Worauf strebst du am meisten?</h2>
+			<h4>Wähle deine Priorität aus.</h4>
             <div class="answer-options">
                 <a href="#" data-answer="umsatz">Umsatz</a>
                 <a href="#" data-answer="Bekanntheit">Bekanntheit</a>
@@ -71,7 +76,8 @@
             </div>
         </div>
         <div id="question3" class="question-container" style="display: none;">
-            <h3>Wähle deinen geplanten Zeitraum:</h3>
+            <h2>Wähle deinen geplanten Zeitraum!</h2>
+			<h4>3, 6 oder 12 Monate.</h4>
             <div class="answer-options">
                 <a href="#" data-answer="3 monate">3 Monate</a>
                 <a href="#" data-answer="6 monate">6 Monate</a>
@@ -79,7 +85,8 @@
             </div>
         </div>
         <div id="question4" class="question-container" style="display: none;">
-            <h3>Wer soll vor die Kamera?:</h3>
+            <h2>Wer soll vor die Kamera?</h2>
+			<h4>Wer wird aufgenommen?</h4>
             <div class="answer-options">
                 <a href="#" data-answer="ich">Ich</a>
                 <a href="#" data-answer="mitarbeiter">Mitarbeiter</a>
@@ -87,26 +94,29 @@
             </div>
         </div>
         <div id="question5" class="question-container" style="display: none;">
-            <h3>Drehen wir bei euch oder bei uns?</h3>
+            <h2>Wo sollen die Videos aufgenommen werden?</h2>
+			<h4>Drehen wir bei euch oder bei uns?</h4>
             <div class="answer-options">
                 <a href="#" data-answer="bei uns">Bei uns</a>
                 <a href="#" data-answer="bei euch">Bei euch</a>
             </div>
         </div>
         <div id="question6" class="question-container" style="display: none;">
-            <h3>Bitte geben Sie die Adresse ein:</h3>
-            <input type="text" id="address-input">
-            <button id="submit-address-btn">Adresse bestätigen</button>
+            <h2>Wo genau bei euch?</h2>
+			<h4>Bitte geben Sie die Adresse ein.</h4>
+            <input type="text" id="address-input" placeholder="Adresse*" required>
+            <button id="submit-address-btn">Bestätigen</button>
         </div>
         <div id="question7" class="question-container" style="display: none;">
-            <h3>Unsere Dienstleistungen kosten ungefähr 3000-5000€ im Monat. Sind Sie damit einverstanden?</h3>
+            <h2>Unsere Preisspanne liegt bei 3000-5000€ pro Monat.</h2>
+			<h4>Sind Sie damit einverstanden?</h4>
             <div class="answer-options">
                 <a href="#" data-answer="Ja">Ja</a>
                 <a href="#" data-answer="Nein">Nein</a>
             </div>
         </div>
         <div id="user-info-form" style="display: none;">
-            <h3>Bitte geben Sie Ihre Kontaktdaten ein:</h3>
+            <h2>Bitte geben Sie Ihre Kontaktdaten ein:</h2>
             <input type="text" id="name-input" placeholder="Name*" required>
             <input type="tel" id="phone-input" placeholder="Telefonnummer*" required>
             <input type="url" id="website-input" placeholder="Webseite (Optional)">
@@ -119,14 +129,63 @@
             <p id="user-data"></p>
         </div>
         <div id="not-offered-container" style="display: none;">
-            <h2>Information</h2>
-            <p>Wir bieten leider nichts unter diesem Preispunkt an.</p>
+            <h2>Schade!</h2>
+            <h4>Wir bieten leider nichts unter diesem Preispunkt an.</h4>
+			<h2>😞</h2>
         </div>
 		<div id="sucess-container" style="display: none;">
             <h2>Danke für deine Anfrage</h2>
-            <p>Wir werden uns schnellstmöglich bei dir melden.</p>
+            <h4>Wir werden uns schnellstmöglich bei dir melden.</h4>
+			<h2>😀</h2>
+        </div>
+		<div id="progress-container-wrapper">
+    <div id="progress-container">
+        <div id="progress-bar">50%</div>
+    </div>
+</div>
+		    </div>
+		<div id="help-reasons">
+    <div class="help-reason">
+    <i class="fas fa-chart-line"></i>
+    <h3>Mehr Reichweite</h3>
+    <p>Wir helfen Ihnen, Ihre Reichweite signifikant zu steigern und mehr potenzielle Kunden zu erreichen.</p>
+</div>
+<div class="help-reason">
+    <i class="fas fa-users"></i>
+    <h3>Talent Acquisition</h3>
+    <p>Wir unterstützen Sie dabei, qualifizierte Mitarbeiter zu finden und zu rekrutieren, die Ihre Vision teilen.</p>
+</div>
+<div class="help-reason">
+    <i class="fas fa-chart-bar"></i>
+    <h3>Umsatzsteigerung</h3>
+    <p>Unsere Strategien sind darauf ausgerichtet, Ihren Umsatz nachhaltig zu steigern und Ihre Ziele zu übertreffen.</p>
+</div>
+</div>
+<div id="founder-profile">
+    <div id="founder-info">
+        <h2>Gründer: Orhan</h2>
+        <button class="founder-profile-btn">
+            <ion-icon name="logo-tiktok"></ion-icon>
+            Zum Profil von Gründer Orhan
+        </button>
+        <p id="fp-p">Orhan ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro unn ist der Gründer von Yarro und hat durch seine Inhalte auf TikTok eine große Reichweite erzielt.</p>
+        <div class="video-stats">
+            <div class="stats-item">
+                <h4>Videos</h4>
+                <p>13.000.000</p>
+            </div>
+            <div class="stats-item">
+                <h4>Follower</h4>
+                <p>13.000.000</p>
+            </div>
+            <div class="stats-item">
+                <h4>Likes</h4>
+                <p>13.000.000</p>
+            </div>
         </div>
     </div>
+</div>
+
 
     <script>
 	// Partikel
@@ -241,198 +300,254 @@ particlesJS('particles-js', {
     retina_detect: true
 });
 
-	// JavaScript für das responsive Navigationsmenü
-        document.addEventListener('DOMContentLoaded', function() {
-            const toggleBtn = document.getElementById('navbar-toggle');
-            const nav = document.getElementById('navbar-nav');
-
-            toggleBtn.addEventListener('click', function() {
-                nav.classList.toggle('show');
-            });
-        });
 
         // JavaScript für die Frage-und-Antwort-Logik
-        document.addEventListener('DOMContentLoaded', function() {
-            const questionContainers = document.querySelectorAll('.question-container');
-            const notOfferedContainer = document.getElementById('not-offered-container');
-			const sucessContainer = document.getElementById('sucess-container');
-            const userInfoForm = document.getElementById('user-info-form');
-            const selectedOptionsText = document.getElementById('selected-options');
-            const userDataText = document.getElementById('user-data');
-            let address = '';
-            let selectedAnswers = {}; // Objekt zur Speicherung der ausgewählten Antworten
+document.addEventListener('DOMContentLoaded', function() {
+const showcaseButton = document.getElementById('showcase-button');
+const mitgliedButton = document.getElementById('mitglied-button');
+        const dynamicContent = document.getElementById('dynamic-content');
+    const toggleBtn = document.getElementById('navbar-toggle');
+    const nav = document.getElementById('navbar-nav');
 
-            // Array zur Speicherung der Fragen
-            const questions = [
-                "Ist dein Unternehmen auf TikTok?",
-                "Was ist deine Priorität?",
-                "Wähle deinen geplanten Zeitraum:",
-                "Wer soll vor die Kamera?",
-                "Drehen wir bei euch oder bei uns?",
-                "Bitte geben Sie die Adresse ein:",
-                "Unsere Dienstleistungen kosten ungefähr 3000-5000€ im Monat. Sind Sie damit einverstanden?"
-            ];
+showcaseButton.addEventListener('click', function() {
+            dynamicContent.scrollIntoView({ behavior: 'smooth' });
+        });
+		mitgliedButton.addEventListener('click', function() {
+            dynamicContent.scrollIntoView({ behavior: 'smooth' });
+        });
 
-            // Funktion, um eine bestimmte Frage anzuzeigen
-            function showQuestion(index) {
-                questionContainers.forEach((container, idx) => {
-                    if (idx === index) {
-                        container.style.display = 'block';
-						container.classList.add('animated'); // CSS-Klasse hinzufügen
-                    } else {
-                        container.style.display = 'none';
-                    }
-                });
+    toggleBtn.addEventListener('click', function() {
+        nav.classList.toggle('show');
+        // Toggle zwischen ☰ und X für das Menüsymbol
+        if (nav.classList.contains('show')) {
+            toggleBtn.textContent = '✕'; // X-Symbol anzeigen
+        } else {
+            toggleBtn.textContent = '☰'; // Ursprüngliches Symbol anzeigen
+        }
+    });
+
+    const questionContainers = document.querySelectorAll('.question-container');
+    const notOfferedContainer = document.getElementById('not-offered-container');
+    const sucessContainer = document.getElementById('sucess-container');
+    const userInfoForm = document.getElementById('user-info-form');
+    const selectedOptionsText = document.getElementById('selected-options');
+    const userDataText = document.getElementById('user-data');
+    const progressBar = document.getElementById('progress-bar');
+    let address = '';
+    let selectedAnswers = {}; // Objekt zur Speicherung der ausgewählten Antworten
+
+    // Array zur Speicherung der Fragen
+    const questions = [
+        "Ist dein Unternehmen auf TikTok?",
+        "Was ist deine Priorität?",
+        "Wähle deinen geplanten Zeitraum:",
+        "Wer soll vor die Kamera?",
+        "Drehen wir bei euch oder bei uns?",
+        "Bitte geben Sie die Adresse ein:",
+        "Unsere Dienstleistungen kosten ungefähr 3000-5000€ im Monat. Sind Sie damit einverstanden?"
+    ];
+
+    // Funktion, um eine bestimmte Frage anzuzeigen
+    function showQuestion(index) {
+        questionContainers.forEach((container, idx) => {
+            if (idx === index) {
+                container.style.display = 'block';
+                container.classList.add('animated'); // CSS-Klasse hinzufügen
+            } else {
+                container.style.display = 'none';
             }
-
-            // Zeige die erste Frage beim Laden der Seite an
-            showQuestion(0);
-
-            // Event Listener für alle Antwort-Optionen
-            questionContainers.forEach((container, index) => {
-                const answerOptions = container.querySelectorAll('.answer-options a');
-                answerOptions.forEach(answer => {
-                    answer.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        const answerText = answer.getAttribute('data-answer');
-
-                        // Speichere die ausgewählte Antwort
-                        selectedAnswers[questions[index]] = answerText;
-
-                        selectedOptionsText.innerHTML += `${questions[index]} : ${answerText}<br>`;
-
-                        if (index === 0) {
-                            showQuestion(1);
-                        } else if (index === 1) {
-                            showQuestion(2);
-                        } else if (index === 2) {
-                            showQuestion(3);
-							                        } else if (index === 3) {
-                            showQuestion(4);
-                        } else if (index === 4) {
-                            if (answerText === 'bei uns') {
-                                showQuestion(5);
-                            } else {
-                                showQuestion(6);
-                            }
-                        } else if (index === 5) {
-                            address = document.getElementById('address-input').value;
-                            showQuestion(6);
-                        } else if (index === 6) {
-                            if (answerText === 'Ja') {
-                                showUserForm();
-                            } else {
-                                showNotOffered();
-                            }
-                        }
-                    });
-                });
-            });
-
-            // Funktion, um das Benutzerdaten-Formular anzuzeigen
-            function showUserForm() {
-                userInfoForm.style.display = 'block';
-				userInfoForm.classList.add('animated'); // CSS-Klasse hinzufügen
-
-                // Verberge alle Frage-Container und das Kontaktformular
-                questionContainers.forEach(container => {
-                    container.style.display = 'none';
-                });
-            }
-
-            // Event Listener für das Benutzerdaten-Formular
-            const submitUserInfoBtn = document.getElementById('submit-user-info-btn');
-            submitUserInfoBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const name = document.getElementById('name-input').value;
-                const phone = document.getElementById('phone-input').value;
-                const website = document.getElementById('website-input').value;
-                const email = document.getElementById('email-input').value;
-
-				// Validierung der Pflichtfelder
-				if (name.trim() === '' || phone.trim() === '' || email.trim() === '') {
-					alert('Bitte füllen Sie alle Pflichtfelder aus.');
-				return;
-				}
-
-                // Validierung der Eingaben (hier einfachheitshalber nur das E-Mail-Feld)
-                if (email && validateEmail(email)) {
-                    // AJAX-Anfrage erstellen
-                    const xhr = new XMLHttpRequest();
-                    const url = 'ergebnis.php'; // Pfad zum PHP-Skript auf deinem Server
-
-                    // Daten zusammenstellen
-                    const params = `name=${name}&telefon=${phone}&webseite=${website}&email=${email}&antworten=${JSON.stringify(selectedAnswers)}`;
-
-                    // POST-Anfrage senden
-                    xhr.open('POST', url, true);
-                    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-                    xhr.onreadystatechange = function() {
-                        if (xhr.readyState == 4 && xhr.status == 200) {
-                            // Erfolgreiche Verarbeitung (optional: Erfolgsmeldung anzeigen)
-                            console.log(xhr.responseText);
-                            // Hier kannst du weitere Aktionen ausführen, z.B. eine Erfolgsmeldung anzeigen
-							showSucess(); // Hier wird die Funktion aufgerufen, wenn die Anfrage erfolgreich war
-                        }
-                    };
-
-                    // Anfrage senden
-                    xhr.send(params);
-
-                    // Verberge das Formular
-                    userInfoForm.style.display = 'none';
-
-                    // Zeige die gesammelten Antworten und Benutzerdaten an
-                    showResultsWithUserData(name, phone, website, email);
-                } else {
-                    alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
-                }
-            });
-
-            // Funktion zur Validierung der E-Mail-Adresse (einfache Validierung)
-            function validateEmail(email) {
-                const re = /\S+@\S+\.\S+/;
-                return re.test(email);
-            }
-
-            // Funktion, um die Nachricht anzuzeigen, wenn der Preis nicht akzeptiert wird
-            function showNotOffered() {
-                notOfferedContainer.style.display = 'block';
-				notOfferedContainer.classList.add('animated');
-
-                // Verberge alle Frage-Container
-                questionContainers.forEach(container => {
-                    container.style.display = 'none';
-                });
-            }
-			
-			// Funktion, um die Nachricht anzuzeigen, wenn Formular gesendet wird
-            function showSucess() {
-                sucessContainer.style.display = 'block';
-				successContainer.classList.add('animated');
-
-                // Verberge alle Frage-Container
-                questionContainers.forEach(container => {
-                    container.style.display = 'none';
-                });
-            }
-
-            // Event Listener für die Adresseingabe-Bestätigung
-            const submitAddressBtn = document.getElementById('submit-address-btn');
-submitAddressBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    address = document.getElementById('address-input').value;
-
-    // Überprüfung, ob "bei uns" ausgewählt wurde und eine Adresse eingegeben wurde
-    if (selectedAnswers[questions[4]] === 'bei uns' && address.trim() !== '') {
-        selectedAnswers['Adresse'] = address; // Adresse hinzufügen zu den ausgewählten Antworten
+        });
+        updateProgressBar(index);
     }
 
-    // Frage 7 anzeigen unabhängig von der Adresseingabe
-    showQuestion(6);
-});
+    // Zeige die erste Frage beim Laden der Seite an
+    showQuestion(0);
+
+    // Event Listener für alle Antwort-Optionen
+    questionContainers.forEach((container, index) => {
+        const answerOptions = container.querySelectorAll('.answer-options a');
+        answerOptions.forEach(answer => {
+            answer.addEventListener('click', function(e) {
+                e.preventDefault();
+                const answerText = answer.getAttribute('data-answer');
+
+                // Speichere die ausgewählte Antwort
+                selectedAnswers[questions[index]] = answerText;
+
+                selectedOptionsText.innerHTML += `${questions[index]} : ${answerText}<br>`;
+
+                if (index === 0) {
+                    showQuestion(1);
+                } else if (index === 1) {
+                    showQuestion(2);
+                } else if (index === 2) {
+                    showQuestion(3);
+                } else if (index === 3) {
+                    showQuestion(4);
+                } else if (index === 4) {
+                    if (answerText === 'bei uns') {
+                        showQuestion(5);
+                    } else {
+                        showQuestion(6);
+                    }
+                } else if (index === 5) {
+                    address = document.getElementById('address-input').value;
+                    showQuestion(6);
+                } else if (index === 6) {
+                    if (answerText === 'Ja') {
+                        showUserForm();
+                    } else {
+                        showNotOffered();
+                    }
+                }
+            });
         });
+    });
+
+    // Funktion, um das Benutzerdaten-Formular anzuzeigen
+    function showUserForm() {
+        userInfoForm.style.display = 'block';
+        userInfoForm.classList.add('animated'); // CSS-Klasse hinzufügen
+
+        // Verberge alle Frage-Container und das Kontaktformular
+        questionContainers.forEach(container => {
+            container.style.display = 'none';
+        });
+        updateProgressBar(questions.length);
+    }
+
+    // Event Listener für das Benutzerdaten-Formular
+    const submitUserInfoBtn = document.getElementById('submit-user-info-btn');
+    submitUserInfoBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name-input').value;
+        const phone = document.getElementById('phone-input').value;
+        const website = document.getElementById('website-input').value;
+        const email = document.getElementById('email-input').value;
+
+        // Validierung der Pflichtfelder
+        if (name.trim() === '' || phone.trim() === '' || email.trim() === '') {
+            alert('Bitte füllen Sie alle Pflichtfelder aus.');
+            return;
+        }
+
+        // Validierung der Eingaben (hier einfachheitshalber nur das E-Mail-Feld)
+        if (email && validateEmail(email)) {
+            // AJAX-Anfrage erstellen
+            const xhr = new XMLHttpRequest();
+            const url = 'ergebnis.php'; // Pfad zum PHP-Skript auf deinem Server
+
+            // Daten zusammenstellen
+            const params = `name=${name}&telefon=${phone}&webseite=${website}&email=${email}&antworten=${JSON.stringify(selectedAnswers)}`;
+
+            // POST-Anfrage senden
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Erfolgreiche Verarbeitung (optional: Erfolgsmeldung anzeigen)
+                    console.log(xhr.responseText);
+                    // Hier kannst du weitere Aktionen ausführen, z.B. eine Erfolgsmeldung anzeigen
+                    showSucess(); // Hier wird die Funktion aufgerufen, wenn die Anfrage erfolgreich war
+                }
+            };
+
+            // Anfrage senden
+            xhr.send(params);
+
+            // Verberge das Formular
+            userInfoForm.style.display = 'none';
+
+            // Zeige die gesammelten Antworten und Benutzerdaten an
+            showResultsWithUserData(name, phone, website, email);
+        } else {
+            alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+        }
+    });
+
+    // Funktion zur Validierung der E-Mail-Adresse (einfache Validierung)
+    function validateEmail(email) {
+        const re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+
+    // Funktion zur Anzeige des Erfolgscontainers
+    function showSucess() {
+        sucessContainer.style.display = 'block';
+        sucessContainer.classList.add('animated');
+
+        // Verberge alle anderen Container
+        document.querySelectorAll('.question-container, #user-info-form, #not-offered-container').forEach(container => {
+            container.style.display = 'none';
+        });
+
+        // Farbe des Fortschrittsbalkens auf grün ändern
+        progressBar.style.backgroundColor = 'green';
+    }
+
+    // Funktion zur Anzeige der Nachricht, wenn der Preis nicht akzeptiert wird
+    function showNotOffered() {
+        notOfferedContainer.style.display = 'block';
+        notOfferedContainer.classList.add('animated');
+
+        // Verberge alle Frage-Container
+        questionContainers.forEach(container => {
+            container.style.display = 'none';
+        });
+
+        // Farbe des Fortschrittsbalkens auf rot ändern
+        progressBar.style.backgroundColor = 'red';
+    }
+
+    // Event Listener für die Adresseingabe-Bestätigung
+    const submitAddressBtn = document.getElementById('submit-address-btn');
+    submitAddressBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        address = document.getElementById('address-input').value;
+
+        // Überprüfung, ob "bei uns" ausgewählt wurde und eine Adresse eingegeben wurde
+        if (selectedAnswers[questions[4]] === 'bei uns' && address.trim() !== '') {
+            selectedAnswers['Adresse'] = address; // Adresse hinzufügen zu den ausgewählten Antworten
+        } else {
+		alert('Bitte geben Sie Ihre Adresse ein.');
+        return; // Abbruch, wenn Adresse nicht eingegeben wurde
+		}
+
+        // Frage 7 anzeigen unabhängig von der Adresseingabe
+        showQuestion(6);
+    });
+
+    // Funktion zur Aktualisierung des Fortschrittsbalkens und des Textes
+    function updateProgressBar(questionIndex) {
+        const totalQuestions = questions.length;
+        const progressPercentage = ((questionIndex + 1) / (totalQuestions + 1)) * 100;
+        progressBar.style.width = `${progressPercentage}%`;
+        progressBar.textContent = `${Math.round(progressPercentage)}%`;
+    }
+});
+
     </script>
+<footer class="footer">
+    <ul class="social-icon">
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-tiktok"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+    </ul>
+    <ul class="menu">
+      <li class="menu__item"><a class="menu__link" href="#">Impressum</a></li>
+      <li class="menu__item"><a class="menu__link" href="#">AGB</a></li>
+      <li class="menu__item"><a class="menu__link" href="#">Datenschutz</a></li>
+    </ul>
+    <p>&copy;2024 Orhan & Atakan | Alle Rechte vorbehalten</p>
+  </footer>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

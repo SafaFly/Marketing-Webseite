@@ -1,15 +1,193 @@
 /* Global Styles */
+:root {
+    --btn-color: #3586ff;
+    --btn-hover-color: #0056b3;
+    --schriftart: Poppins;
+    --bg-color: linear-gradient(to right, #0056b3, #1d73ff);
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+.footer {
+    position: relative;
+    width: 100%;
+    background: var(--btn-color);
+    min-height: 100px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: auto; /* Footer ans untere Ende der Seite setzen */
+}
+
+
+.social-icon,
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.social-icon__item,
+.menu__item {
+  list-style: none;
+}
+
+.social-icon__link {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+.social-icon__link:hover {
+  transform: translateY(-10px);
+}
+
+.menu__link {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+  text-decoration: none;
+  opacity: 0.75;
+  font-weight: 300;
+}
+
+.menu__link:hover {
+  opacity: 1;
+}
+
+.footer p {
+  color: #fff;
+  margin: 15px 0 10px 0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+#founder-profile {
+    position: relative; /* Stelle sicher, dass das Pseudo-Element relativ dazu positioniert wird */
+	width: 100%;
+}
+
+#founder-profile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('path-to-background.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px); /* Blur-Effekt auf das Pseudo-Element anwenden */
+    z-index: -1; /* Pseudo-Element hinter alle anderen Inhalte legen */
+}
+
+#founder-info {
+    position: relative; /* Stelle sicher, dass der Inhalt über dem Pseudo-Element liegt */
+    z-index: 1; /* Inhalte über das Pseudo-Element legen */
+    padding-top: 50px;
+    padding-bottom: 50px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+}
+
+
+#founder-info h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.founder-profile-btn {
+    background-color: var(--btn-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.founder-profile-btn ion-icon {
+    margin-right: 10px;
+}
+
+.founder-profile-btn:hover {
+    background-color: var(--btn-hover-color);
+}
+
+#founder-info p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.video-stats {
+    display: flex;
+    justify-content: center; /* Zentriert horizontal */
+    align-items: flex-start; /* Oben ausgerichtet */
+    margin: 0 auto; /* Zentriert horizontal */
+    max-width: 800px; /* Maximale Breite für den Inhalt */
+    padding: 20px; /* Innenabstand anpassen */
+}
+
+.stats-item {
+    text-align: center; /* Zentriert den Inhalt horizontal */
+    flex: 1 1 auto; /* Flexibles Wachstum, gleichmäßige Verteilung */
+    margin: 0 10px; /* Äußerer Abstand zwischen den Elementen */
+    max-width: 200px; /* Maximale Breite für jedes Element */
+}
+
+.stats-item h4 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.stats-item p {
+    font-size: 30px; /* Größe für die Zahlenwerte */
+    font-weight: bold;
+    margin: 0;
+    overflow: hidden; /* Verhindert, dass der Text über den Container hinausgeht */
+    white-space: nowrap; /* Verhindert das Umbruch des Textes */
+}
+
+
+
+/* Body-Stil mit overflow-x: hidden; hinzufügen */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--schriftart);
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: var(--bg-color);
     color: #333;
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-x: hidden; /* Deaktiviert die horizontale Scroll-Leiste */
+    overflow-x: hidden; /* Verhindert das horizontale Scrollen */
 }
+
+/* Center Container-Stil anpassen */
+.center-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden; /* Verhindert das horizontale Scrollen */
+}
+
 
 /* Navbar Styles */
 #navbar {
@@ -17,7 +195,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background-color: #ffffff; /* Weiße Hintergrundfarbe */
+    background-color: var(--bg-color); /* Weiße Hintergrundfarbe */
     color: #000000; /* Schwarzer Text */
     width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -25,6 +203,7 @@ body {
 
 #navbar-logo img {
     height: 40px;
+    padding-left: 15px;
 }
 
 #navbar-toggle {
@@ -35,22 +214,30 @@ body {
 
 #navbar-nav {
     display: flex;
-    justify-content: center; /* Inhalte in der Mitte ausrichten */
-    align-items: center; /* Vertikal zentrieren */
+    justify-content: right; /* Inhalte in der Mitte ausrichten */
+    align-items: right; /* Vertikal zentrieren */
     flex-grow: 1;
 }
 
 #navbar-nav a {
     color: #000000; /* Schwarzer Text */
     text-decoration: none;
-    padding: 0 15px;
+    padding: 5px 20px;
+    margin-right: 15px;
+    background-color: var(--btn-color);
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
 }
 
 #navbar-nav a:hover {
     text-decoration: underline;
-    color: #007bff; /* Farbe für Hover-Effekt */
+    background-color: var(--btn-hover-color);
+    text-decoration: none;
 }
-
 
 /* Showcase Styles */
 #showcase {
@@ -82,6 +269,22 @@ body {
     transition: transform 0.3s ease;
 }
 
+#showcase-text p {
+    font-family: 'Poppins';
+    color: RGBA(255, 255, 255, 0.69);
+    font-size: 112.5%;
+    text-shadow: none;
+    line-height: 1.5;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    text-align: inherit;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    font-weight: 400;
+}
+
 #showcase-content {
     display: flex;
     justify-content: center; /* Zentriert den Inhalt horizontal */
@@ -93,10 +296,11 @@ body {
     z-index: 1; /* Höheres Z-Index, um vor dem unscharfen Hintergrund zu bleiben */
 }
 
-
 #showcase-text {
     flex: 1 1 auto; /* Flex-Verhältnis für den Textbereich */
     margin-right: 20px;
+    max-width: 600px; /* Beispiel: Maximale Breite des Textcontainers */
+    word-wrap: break-word; /* Umbruch des Textes bei Bedarf erzwingen */
 }
 
 #showcase-text h1 {
@@ -113,7 +317,7 @@ body {
 #showcase-video {
     flex: 1 1 auto; /* Flex-Verhältnis für den Videobereich */
     margin-left: 20px;
-	width: 900px;
+    width: 900px;
 }
 
 #showcase-video video {
@@ -142,18 +346,45 @@ body {
 }
 
 /* Question Container Styles */
-.question-container {
+.question-container, #user-info-form {
     margin-top: 30px;
     text-align: center; /* Zentriert den Text horizontal */
 }
 
-.question-container h3 {
-    margin-bottom: 10px;
-    font-size: 1.5em;
-    color: #003366;
+#help-reasons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 90px; /* Beispielhafter Abstand nach oben */
+	margin-bottom: 90px;
 }
 
-.answer-options {
+.help-reason {
+    text-align: center;
+    max-width: 300px; /* Beispielhafte maximale Breite für jeden Grund */
+}
+
+.question-container h2, #user-info-form h2 {
+    font-family: var(--schriftart);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: normal;
+    color: #0a0908;
+    text-transform: unset;
+    margin: 0em;
+}
+
+.question-container h4, #user-info-form h4 {
+    font-family: var(--schriftart);
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: normal;
+    color: #505051;
+    text-transform: unset;
+}
+
+.answer-options,  {
     display: flex;
     flex-wrap: wrap; /* Zeilenumbruch für kleine Bildschirme */
     justify-content: center; /* Zentriert die Antwortbuttons horizontal */
@@ -163,7 +394,7 @@ body {
 
 .answer-options a {
     padding: 10px 15px;
-    background-color: #007bff;
+    background-color: var(--btn-color);
     border-radius: 5px;
     text-decoration: none;
     color: white;
@@ -172,7 +403,17 @@ body {
 }
 
 .answer-options a:hover {
-    background-color: #0056b3;
+    background-color: var(--btn-hover-color);
+}
+
+.help-reason {
+    text-align: center; /* Zentrieren des Inhalts für bessere Ausrichtung */
+}
+
+.help-reason i {
+    font-size: 3rem; /* Größe der Icons anpassen */
+    color: var(--btn-color); /* Verwendung der benutzerdefinierten Farbvariable */
+    margin-bottom: 10px; /* Abstand unterhalb der Icons für bessere Lesbarkeit */
 }
 
 /* Input Form Styles */
@@ -180,7 +421,7 @@ body {
     display: none;
 }
 
-#user-info-form input {
+#user-info-form input, #question6 input {
     margin-bottom: 10px;
     padding: 10px;
     width: 100%;
@@ -190,14 +431,14 @@ body {
     font-size: 1em;
 }
 
-#user-info-form input:focus {
-    border-color: #007bff;
+#user-info-form input:focus, #question6 input:focus {
+    border-color: var(--btn-color);
     outline: none;
 }
 
-#user-info-form button {
+#user-info-form button, #submit-address-btn {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: var(--btn-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -206,22 +447,97 @@ body {
     transition: background-color 0.3s;
 }
 
-#user-info-form button:hover {
-    background-color: #0056b3;
+#user-info-form button:hover, #submit-address-btn:hover {
+    background-color: var(--btn-hover-color);
 }
 
 /* Result and Not Offered Containers */
 #result-container, #not-offered-container, #sucess-container {
     margin-top: 30px;
+    text-align: center; /* Zentriert den Text horizontal */
 }
 
-#result-container h2, #not-offered-container h2, #sucess-container h2 {
-    font-size: 1.5em;
-    color: #003366;
+#result-container h2, #not-offered-container h2, #sucess-container h2, #user-info-form h2 {
+    font-family: var(--schriftart);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: normal;
+    color: #0a0908;
+    text-transform: unset;
+    margin: 0em;
+}
+
+#result-container h4, #not-offered-container h4, #sucess-container h4, #user-info-form h4 {
+    font-family: var(--schriftart);
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: normal;
+    color: #505051;
+    text-transform: unset;
+}
+
+#user-info-form h2 {
+    padding-bottom: 25px;
+}
+
+#showcase-button {
+    padding: 10px 20px;
+    background-color: var(--btn-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+#showcase-button:hover {
+    background-color: var(--btn-hover-color);
 }
 
 #result-container p, #not-offered-container p, #sucess-container p {
     font-size: 1em;
+}
+
+.animated {
+    animation: fadeIn 1s;
+}
+
+/* Checkmark Animation */
+@keyframes checkmark {
+    0% {
+        stroke-dashoffset: 24px;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+#loader {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+}
+
+#loader svg {
+    width: 100%;
+    height: 100%;
+    animation: checkmark 0.3s ease-out forwards;
+}
+
+#loader path {
+    stroke-dasharray: 24px;
+    stroke-dashoffset: 24px;
+    stroke-width: 4px;
+    stroke: green;
+    fill: none;
 }
 
 /* CSS für die Animation */
@@ -236,6 +552,45 @@ body {
     }
 }
 
+#progress-container-wrapper {
+    display: flex;
+    justify-content: center; /* Zentriert den Fortschrittsbalken horizontal */
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 20px; /* Abstände nach Bedarf anpassen */
+}
+
+#progress-container {
+    width: 100%;
+    max-width: 300px; /* Feste Breite für den Fortschrittsbalken */
+    background-color: #f3f3f3;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+#progress-bar {
+    width: 0;
+    height: 20px;
+    background-color: var(--btn-color);
+    text-align: center;
+    line-height: 20px; /* Vertikale Zentrierung des Textes */
+    color: white;
+    transition: width 0.3s; /* Animation des Fortschritts */
+}
+
+#dynamic-content {
+    padding: 100px; /* Innenabstand für den Inhalt */
+    background-color: white; /* Hintergrundfarbe des Containers */
+    border: 2px solid var(--btn-color); /* Rahmen mit der Farbe var(--btn-color) */
+    border-radius: 10px; /* Abgerundete Ecken für den Container */
+    max-width: 800px; /* Maximale Breite des Containers */
+    margin-top: 100px; /* Zentrieren und Abstand außen */
+    position: relative; /* Position für den z-index */
+    z-index: 1; /* Höhere Ebene im Stapelkontext */
+}
+
+
+
 /* Anwendungsbeispiel der Animation auf das Kontaktformular */
 #user-info-form {
     display: none;
@@ -243,49 +598,209 @@ body {
 }
 
 /* Anwendungsbeispiel der Animation auf die Frage-Container */
-.question-container {
+.question-container, #user-info-form {
     display: none;
     animation: fadeIn 0.5s ease forwards; /* Animation anwenden */
 }
 
-
 /* Media Query for Mobile Devices */
 @media (max-width: 768px) {
+	.stats-item {
+        max-width: 120px;
+    }
+
+	.stats-item h4 {
+		font-size: 14px;
+	}
+	
+	.stats-item p {
+		font-size: 20px;
+	}
+
+    #fp-p {
+        font-size: 12px; /* Reduziert die Schriftgröße auf kleineren Bildschirmen */
+		padding-left: 15px;
+		padding-right: 15px;
+    }
+	
+    /* Body-Stil mit overflow-x: hidden; hinzufügen */
+body {
+    font-family: var(--schriftart);
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.center-container {
+    width: 100%;
+    max-width: 100%; /* Anpassen je nach Bedarf */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden; /* Je nachdem, ob du den Inhalt verstecken oder zulassen möchtest */
+}
+
+	
+.footer {
+    padding: 10px 20px; /* Reduzierter Innenabstand für den Footer */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--btn-color);
+    min-height: 80px;
+}
+
+.social-icon__link {
+    font-size: 1.5rem;
+    margin: 0 8px;
+}
+
+.menu__link {
+    font-size: 1rem;
+    margin: 0 5px;
+}
+
+.footer p {
+    color: #fff;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+
+	
+	#dynamic-content {
+    padding: 30px; /* Reduziere den Innenabstand für den Inhalt */
+    background-color: white; /* Hintergrundfarbe des Containers */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Schatten für den Container */
+    border-radius: 10px; /* Abgerundete Ecken für den Container */
+    max-width: calc(100% - 40px); /* Maximale Breite des Containers, abzüglich des Randes */
+    margin: 30px 20px; /* Abstand außen und links/rechts anpassen */
+    position: relative; /* Position für den z-index */
+    z-index: 1; /* Höhere Ebene im Stapelkontext */
+}
+
+#dynamic-content p {
+    font-size: 1em; /* Standard-Schriftgröße für den Text im Container */
+    line-height: 1.6; /* Zeilenhöhe für bessere Lesbarkeit */
+    margin-bottom: 15px; /* Abstand zwischen Absätzen im Container */
+}
+
+#dynamic-content h2 {
+    font-size: 1.5em; /* Größere Schriftgröße für Überschriften im Container */
+    margin-bottom: 20px; /* Größerer Abstand unter den Überschriften */
+}
+
+	#user-info-form input {
+		margin-left: 8px;
+	}
+
+    #help-reasons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 50px;
+    overflow: hidden; /* Verhindert, dass Elemente aus dem Container ausbrechen */
+}
+
+.help-reason {
+    text-align: center;
+    width: calc(33.33% - 20px); /* Ein Drittel der Breite minus den Abstand */
+    max-width: 300px; /* Maximale Breite für jedes Element */
+}
+
+.help-reason h3 {
+    word-wrap: break-word; /* Umbruch des Textes bei Bedarf */
+}
+
+.help-reason p {
+    font-size: 12px;
+}
+
+
+
+    /* Falls erforderlich: Anpassung für drei Elemente in einer Zeile */
+    .help-reason:nth-child(1),
+    .help-reason:nth-child(2),
+    .help-reason:nth-child(3) {
+        flex: 1 1 calc(33.33% - 20px);
+    }
+
+    .help-reason i {
+        font-size: 2.5rem; /* Größe der Icons anpassen */
+        color: var(--btn-color); /* Verwendung der benutzerdefinierten Farbvariable */
+        margin-bottom: 10px; /* Abstand unterhalb der Icons für bessere Lesbarkeit */
+    }
+
     #navbar {
-        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background-color: var(--bg-color);
+        color: #000000;
+        width: 100%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: relative; /* Position für z-index verwenden */
+        z-index: 1000; /* Hoher z-index-Wert, um über anderen Inhalten zu liegen */
     }
 
     #navbar-toggle {
         display: block;
+        margin-right: 15px;
     }
 
     #navbar-nav {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 60px; /* Adjust the position according to header height */
+        top: 60px;
         left: 0;
         width: 100%;
-        background-color: #003366;
-        transition: transform 0.3s ease; /* Hinzufügen einer Übergangseigenschaft für ein sanftes Ein- und Ausblenden */
-        transform: translateY(-100%); /* Startzustand, Menü außerhalb des Bildschirms */
+        background-color: #ffffff;
+        transition: transform 0.3s ease;
+        transform: translateY(-100%);
+        z-index: 999; /* Ebenfalls ein hoher z-index-Wert */
+        animation: fadeIn 0.5s ease forwards; /* Animation anwenden */
     }
 
     #navbar-nav.show {
         display: flex;
-        transform: translateY(0); /* Einblenden des Menüs durch Verschieben nach oben */
+        transform: translateY(0);
     }
 
     #navbar-nav a {
         padding: 15px 20px;
+        color: #000000;
+        text-decoration: none;
+        margin-right: 30px;
+        margin-left: 30px;
+        margin-bottom: 7.5px;
+        margin-top: 7.5px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
         text-align: center;
     }
+
     #showcase-content {
         flex-direction: column; /* Ändere das Layout auf Spaltenanordnung */
         align-items: center; /* Zentriere den Inhalt horizontal */
     }
 
     #showcase-text {
+        max-width: 100%; /* Auf 100% der verfügbaren Breite begrenzen */
         margin-right: 0; /* Kein rechter Abstand bei kleineren Bildschirmen */
         margin-bottom: 20px; /* Abstand zwischen Text und Video hinzufügen */
         text-align: center; /* Zentriere den Text horizontal */
@@ -294,15 +809,43 @@ body {
     #showcase-video {
         margin-left: 0; /* Kein linker Abstand bei kleineren Bildschirmen */
         width: 100%; /* Volle Breite für das Video */
+        margin-top: 50px;
+        margin-bottom: -50px;
+    }
+
+    .question-container h2, #user-info-form h2 {
+        font-family: var(--schriftart);
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 1.35;
+        letter-spacing: normal;
+        color: #0a0908;
+        text-transform: unset;
+    }
+
+    .question-container h4, #user-info-form h4 {
+        font-family: var(--schriftart);
+        font-size: 19px;
+        font-weight: 400;
+        line-height: 1.35;
+        letter-spacing: normal;
+        color: #505051;
+        text-transform: unset;
     }
 	
-	.question-container h3 {
-        font-size: 1.2em; /* Kleinere Schriftgröße für Überschrift */
-    }
+	.answer-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Zentriert die Antwortbuttons horizontal */
+    gap: 10px; /* Abstand zwischen den Antwortbuttons */
+    margin-top: 10px; /* Äußerer Abstand nach oben */
+    margin-bottom: 10px; /* Äußerer Abstand nach unten */
+}
+
 
     .answer-options a {
         padding: 8px 12px; /* Kleinere Abstände für Antwortbuttons */
         font-size: 0.9em; /* Kleinere Schriftgröße für Antwortbuttons */
     }
-
 }
+
